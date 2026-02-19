@@ -66,6 +66,7 @@
       margin: 20px auto 0;
     }
 
+    /* CARDS DE MAPAS */
     .cards {
       display: flex;
       gap: 24px;
@@ -108,9 +109,7 @@
       box-shadow: 0 12px 32px rgba(0,0,0,0.08);
     }
 
-    .card:hover::after {
-      transform: scaleX(1);
-    }
+    .card:hover::after { transform: scaleX(1); }
 
     .card-icon {
       font-size: 28px;
@@ -143,21 +142,116 @@
       color: var(--accent);
     }
 
+    /* SEÇÃO DE DOWNLOADS */
+    .downloads-section {
+      max-width: 860px;
+      width: 100%;
+      margin-top: 56px;
+      animation: fadeUp 0.7s 0.2s ease both;
+    }
+
+    .downloads-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .downloads-header .label { margin-bottom: 0; }
+
+    .downloads-divider {
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    .downloads-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 12px;
+    }
+
+    .download-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 14px 18px;
+      text-decoration: none;
+      color: inherit;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .download-item:hover {
+      border-color: var(--accent);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    }
+
+    .download-icon {
+      font-size: 22px;
+      flex-shrink: 0;
+    }
+
+    .download-info { flex: 1; min-width: 0; }
+
+    .download-name {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--ink);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .download-meta {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    .download-arrow {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+
     footer {
       margin-top: 60px;
       font-size: 12px;
       color: var(--muted);
       text-align: center;
-      animation: fadeUp 0.7s 0.2s ease both;
+      animation: fadeUp 0.7s 0.3s ease both;
     }
 
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(16px); }
       to   { opacity: 1; transform: translateY(0); }
     }
+
+    /* CREDIT */
+    .credit {
+      position: fixed;
+      top: 14px; left: 16px;
+      font-size: 11px;
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      opacity: 0.6;
+      transition: opacity 0.2s;
+      z-index: 100;
+    }
+
+    .credit:hover { opacity: 1; color: var(--accent); }
   </style>
 </head>
 <body>
+
+  <a class="credit" href="https://eko-ara.com" target="_blank" rel="noopener">feito por Mateus Ferreira · eko-ara.com</a>
 
   <header>
     <p class="label">Dados Eleitorais</p>
@@ -184,8 +278,73 @@
 
   </div>
 
+  <!-- DOWNLOADS -->
+  <div class="downloads-section">
+    <div class="downloads-header">
+      <p class="label">Dados para download</p>
+      <div class="downloads-divider"></div>
+    </div>
+    <div class="downloads-grid">
+
+      <a class="download-item" href="Votacao_Goiania_2016.xlsx" download>
+        <span class="download-icon">📊</span>
+        <div class="download-info">
+          <div class="download-name">Votação Goiânia 2016</div>
+          <div class="download-meta">Eleição Municipal · Excel</div>
+        </div>
+        <span class="download-arrow">↓</span>
+      </a>
+
+      <a class="download-item" href="Votacao_Goiania_2020.xlsx" download>
+        <span class="download-icon">📊</span>
+        <div class="download-info">
+          <div class="download-name">Votação Goiânia 2020</div>
+          <div class="download-meta">Eleição Municipal · Excel</div>
+        </div>
+        <span class="download-arrow">↓</span>
+      </a>
+
+      <a class="download-item" href="Votacao_Goiania_2022.xlsx" download>
+        <span class="download-icon">📊</span>
+        <div class="download-info">
+          <div class="download-name">Votação Goiânia 2022</div>
+          <div class="download-meta">Eleição Estadual · Excel</div>
+        </div>
+        <span class="download-arrow">↓</span>
+      </a>
+
+      <a class="download-item" href="Votacao_Goiania_2024.xlsx" download>
+        <span class="download-icon">📊</span>
+        <div class="download-info">
+          <div class="download-name">Votação Goiânia 2024</div>
+          <div class="download-meta">Eleição Municipal · Excel</div>
+        </div>
+        <span class="download-arrow">↓</span>
+      </a>
+
+      <a class="download-item" href="Votacao_Goias_2018.xlsx" download>
+        <span class="download-icon">📊</span>
+        <div class="download-info">
+          <div class="download-name">Votação Goiás 2018</div>
+          <div class="download-meta">Eleição Estadual · Excel</div>
+        </div>
+        <span class="download-arrow">↓</span>
+      </a>
+
+      <a class="download-item" href="Votacao_Goias_2022.xlsx" download>
+        <span class="download-icon">📊</span>
+        <div class="download-info">
+          <div class="download-name">Votação Goiás 2022</div>
+          <div class="download-meta">Eleição Estadual · Excel</div>
+        </div>
+        <span class="download-arrow">↓</span>
+      </a>
+
+    </div>
+  </div>
+
   <footer>
-    Portfólio de análise eleitoral · Dados eleitorais de Goiás
+    Portfólio de análise eleitoral · Dados eleitorais de Goiás · Fonte: TSE
   </footer>
 
   <script>
