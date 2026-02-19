@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mapas Eleitorais — Fabrício Rosa</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #f5f2ec;
+      --ink: #1a1a1a;
+      --accent: #b5451b;
+      --muted: #7a7065;
+      --card-bg: #ffffff;
+      --border: #e0d9cf;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'DM Sans', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 60px;
+      animation: fadeUp 0.7s ease both;
+    }
+
+    .label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 700;
+      line-height: 1.1;
+      color: var(--ink);
+      margin-bottom: 12px;
+    }
+
+    .subtitle {
+      font-size: 15px;
+      color: var(--muted);
+      font-weight: 300;
+    }
+
+    .divider {
+      width: 40px;
+      height: 2px;
+      background: var(--accent);
+      margin: 20px auto 0;
+    }
+
+    .cards {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+      justify-content: center;
+      max-width: 860px;
+      width: 100%;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 36px 32px;
+      flex: 1 1 340px;
+      max-width: 400px;
+      text-decoration: none;
+      color: inherit;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      animation: fadeUp 0.7s ease both;
+    }
+
+    .card:nth-child(2) { animation-delay: 0.1s; }
+
+    .card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 100%; height: 3px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.08);
+    }
+
+    .card:hover::after {
+      transform: scaleX(1);
+    }
+
+    .card-icon {
+      font-size: 28px;
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    .card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      line-height: 1.3;
+    }
+
+    .card-desc {
+      font-size: 13.5px;
+      color: var(--muted);
+      line-height: 1.6;
+      font-weight: 300;
+    }
+
+    .card-tag {
+      display: inline-block;
+      margin-top: 20px;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    footer {
+      margin-top: 60px;
+      font-size: 12px;
+      color: var(--muted);
+      text-align: center;
+      animation: fadeUp 0.7s 0.2s ease both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <p class="label">Dados Eleitorais</p>
+    <h1>Fabrício Rosa</h1>
+    <p class="subtitle">Vereador eleito em Goiânia — Goiás · 2024</p>
+    <div class="divider"></div>
+  </header>
+
+  <div class="cards">
+
+    <a class="card" href="mapa_scroll_goiania.html">
+      <span class="card-icon">🗺️</span>
+      <div class="card-title">Votação por Bairro — Goiânia</div>
+      <p class="card-desc">Evolução eleitoral por bairro nas eleições de 2016, 2020, 2022 e 2024. Navegue pela linha do tempo interativa.</p>
+      <span class="card-tag">Ver mapa →</span>
+    </a>
+
+    <a class="card" href="mapa_calor_goias_por_cidade.html">
+      <span class="card-icon">🌡️</span>
+      <div class="card-title">Votação por Município — Goiás</div>
+      <p class="card-desc">Mapa de calor com a distribuição de votos por município no estado de Goiás. Eleição de Deputado Estadual 2022.</p>
+      <span class="card-tag">Ver mapa →</span>
+    </a>
+
+  </div>
+
+  <footer>
+    Portfólio de análise eleitoral · Dados eleitorais de Goiás
+  </footer>
+
+</body>
+</html>
