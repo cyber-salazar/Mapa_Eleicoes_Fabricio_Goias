@@ -188,5 +188,13 @@
     Portfólio de análise eleitoral · Dados eleitorais de Goiás
   </footer>
 
+  <script>
+    document.querySelectorAll('.card').forEach(card => {
+      card.addEventListener('click', function(e) {
+        e.preventDefault();
+        window.open(this.href, '_blank');
+      });
+    });
+  </script>
 </body>
 </html>
