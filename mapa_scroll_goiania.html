@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Mapas Eleitorais de Goiânia – Linha do Tempo</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      scroll-behavior: smooth;
+      overflow-y: scroll;
+      font-family: sans-serif;
+    }
+
+    body {
+      scroll-snap-type: y mandatory;
+    }
+
+    section {
+      scroll-snap-align: start;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      background: white;
+      position: relative;
+    }
+
+    iframe {
+      border: none;
+      width: 100%;
+      height: 90vh;
+    }
+
+    h2 {
+      margin: 20px 0 10px;
+    }
+
+    /* Linha do tempo lateral */
+    .timeline {
+      position: fixed;
+      top: 50%;
+      left: 20px;
+      transform: translateY(-50%);
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .timeline a {
+      text-decoration: none;
+      color: #555;
+      font-weight: bold;
+      padding: 8px 12px;
+      background-color: #eee;
+      border-radius: 6px;
+      text-align: center;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .timeline a.active {
+      background-color: #007bff;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Barra lateral de navegação -->
+  <div class="timeline">
+    <a href="#ano2016" id="link2016">2016</a>
+    <a href="#ano2020" id="link2020">2020</a>
+    <a href="#ano2022" id="link2022">2022</a>
+    <a href="#ano2024" id="link2024">2024</a>
+  </div>
+
+  <!-- Seções com mapas -->
+  <section id="ano2016">
+    <h2>🗳️ Mapa de Goiânia – Eleição 2016</h2>
+    <iframe src="mapa_bairros_goiania_2016.html"></iframe>
+  </section>
+
+  <section id="ano2020">
+    <h2>🗳️ Mapa de Goiânia – Eleição 2020</h2>
+    <iframe src="mapa_bairros_goiania_2020.html"></iframe>
+  </section>
+
+  <section id="ano2022">
+    <h2>🗳️ Mapa de Goiânia – Eleição 2022</h2>
+    <iframe src="mapa_bairros_goiania_2022.html"></iframe>
+  </section>
+
+  <section id="ano2024">
+    <h2>🗳️ Mapa de Goiânia – Eleição 2024</h2>
+    <iframe src="mapa_bairros_goiania_2024.html"></iframe>
+  </section>
+
+  <script>
+    const sections = document.querySelectorAll('section');
+    const links = {
+      2016: document.getElementById('link2016'),
+      2020: document.getElementById('link2020'),
+      2022: document.getElementById('link2022'),
+      2024: document.getElementById('link2024')
+    };
+
+    function getCurrentSection() {
+      let index = 0;
+      sections.forEach((sec, i) => {
+        const rect = sec.getBoundingClientRect();
+        if (rect.top <= window.innerHeight / 2) {
+          index = i;
+        }
+      });
+      return sections[index].id.replace('ano', '');
+    }
+
+    function updateActiveLink() {
+      const current = getCurrentSection();
+      Object.keys(links).forEach(ano => {
+        links[ano].classList.toggle('active', ano === current);
+      });
+    }
+
+    document.addEventListener('scroll', updateActiveLink);
+    window.addEventListener('load', updateActiveLink);
+  </script>
+
+</body>
+</html>
